@@ -1,0 +1,13 @@
+header.navbar
+  nav
+    ul.nav.navbar-right
+      li = link_to "a", root_path
+
+      li
+        = form_tag('/pages', method: "post") do |f|
+          = text_field_tag 'page[url]', nil, :placeholder => "http://..."
+          = submit_tag "Save"
+
+  - flash.each do |message_type, message|
+    div class="alert alert-#{ message_type }"
+      = message

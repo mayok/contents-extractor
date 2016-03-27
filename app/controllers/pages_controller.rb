@@ -10,10 +10,16 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     if @page.save
-      redirecto_to @page
+      flash[:success] = "Successfully page added!"
+      redirect_to root_url
     else
-      render 'index'
+      flash[:fail]    = "failed"
+      redirect_to root_url
     end
+
+    # respond_to do |format|
+    #   format.html { render nothing: true }
+    # end
   end
 
   def destroy
