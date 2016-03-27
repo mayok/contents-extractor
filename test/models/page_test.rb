@@ -23,4 +23,9 @@ class PageTest < ActiveSupport::TestCase
     @page.host = "     "
     assert_not @page.valid?
   end
+
+  test "title should be present" do
+    @page.title = "     "
+    assert_not @page.valid?
+  end
 end
