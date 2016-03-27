@@ -1,10 +1,10 @@
-class CreateContents < ActiveRecord::Migration
+class CreatePages < ActiveRecord::Migration
   def change
-    create_table :contents do |t|
+    create_table :pages do |t|
       t.string :title
       t.string :url
       t.string :host
-      t.text :contents
+      t.text :content
 
       t.timestamps
     end
