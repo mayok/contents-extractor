@@ -11,11 +11,14 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+gem 'nokogiri'
+
 group :development do
   gem 'spring'
   gem 'sqlite3'
   gem 'minitest'
   gem 'json', '1.8.3'
+  gem 'therubyracer'
 end
 
 group :production do
