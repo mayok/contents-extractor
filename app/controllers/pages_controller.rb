@@ -9,6 +9,8 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(page_params)
+    @page.update_attributes(@page.extract(@page.url))
+
     if @page.save
       flash[:success] = "Successfully page added!"
       redirect_to root_url

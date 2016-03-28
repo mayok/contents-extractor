@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160327071521) do
 
-  create_table "contents", force: true do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "host"
-    t.text     "contents"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pages", force: true do |t|
     t.string   "title"
     t.string   "url"
