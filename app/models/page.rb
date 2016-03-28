@@ -5,52 +5,55 @@ class Page < ActiveRecord::Base
   validates :host,  presence: true
   validates :title, presence: true
 
-  def extract url
+  def self.extract url
     contents = [
-      "//div[@class='main' or @id='main']",
-      "//div[@class='entry-content']",
-      "//div[contains(@class, 'content') or contains(@id, 'content')]",
-      "//div[@class='body']",
+      "//*[contains(@class, 'content') or contains(@id, 'content')]",
+      "//*[contains(@class, 'Content') or contains(@id, 'Content')]",
+      "//*[@class='body' or @id='body']",
+      "//*[@class='main' or @id='main']",
       "//body"
     ]
     str = [
       "//script",
       "//style",
       "//iframe",
+      "//form",
       "//*[starts-with(@class, 'ad') or starts-with(@id, 'ad')]",
       "//*[contains(@class, 'comment') or contains(@id, 'comment')]",
+      "//*[contains(@class, 'advertisement')]",
+      "//*[contains(@class, 'footer') or contains(@class, 'Footer')]",
+      "//*[contains(@class, 'social')]",
+      "//*[contains(@class, 'modal')]",
       #"//a[not(contains(@href, '#{host}'))]",
     ]
-
-    p url
 
     charset = nil
     open url do |f|
       charset = f.charset
     end
 
-    #html = open(url, "r:#{charset}").read
-    #html.encode!('utf-8', charset, invalid: :replace, undef: :replace)
-    html = open(url, "r:utf-8").read.encode('utf-8', charset, invalid: :replace, undef: :replace)
+    html = open(url, "r:binary").read.encode("utf-8", charset, invalid: :replace, undef: :replace)
     doc = Nokogiri::HTML.parse html
 
     # title
-    title = doc.search("//title").text || "no title"
+    title = doc.xpath("//title")[0].text || "no title"
 
-    # contents
-    for p in contents do
-      f = doc.search(p)
-      if f
-        doc = f
-        break
+    # remove script, comments,
+    for cond in str do
+      doc.xpath(cond).each do |el|
+      	el.remove
       end
     end
 
-    # remove script, comments,
-    for p in str do
-      doc.xpath(p).each do |el|
-      	el.remove
+    # contents
+    for cond in contents do
+      f = doc.xpath(cond)
+      if !f.empty?
+        p cond
+        doc = f.last
+        break
       end
+      #if doc = f.pop then break end
     end
 
     {
