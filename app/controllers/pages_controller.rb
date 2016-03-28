@@ -8,20 +8,16 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(page_params)
-    @page.update_attributes(@page.extract(@page.url))
+    page = Page.new(page_params)
+    page.update_attributes(Page.extract(page.url))
 
-    if @page.save
+    if page.save
       flash[:success] = "Successfully page added!"
-      redirect_to root_url
     else
       flash[:fail]    = "failed"
-      redirect_to root_url
     end
+    redirect_to root_url
 
-    # respond_to do |format|
-    #   format.html { render nothing: true }
-    # end
   end
 
   def destroy
