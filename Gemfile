@@ -18,7 +18,8 @@ group :development do
   gem 'sqlite3'
   gem 'minitest'
   gem 'json', '1.8.3'
-  gem 'therubyracer'
+  gem 'therubyracer' if RUBY_PLATFORM.match(/Linux/)
+  gem 'libv8' if RUBY_PLATFORM.match(/Linux/)
 end
 
 group :production do
