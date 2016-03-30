@@ -4,8 +4,8 @@ class PageTest < ActiveSupport::TestCase
   def setup
     @page = Page.new(
       title: "hoge",
-      url: "http://example.com",
-      host: "example.com",
+      url: "http://www.yahoo.co.jp",
+      host: "www.yahoo.co.jp",
       content: "hgoehogehoge"
     )
   end
@@ -19,13 +19,4 @@ class PageTest < ActiveSupport::TestCase
     assert_not @page.valid?
   end
 
-  test "host should be present" do
-    @page.host = "     "
-    assert_not @page.valid?
-  end
-
-  test "title should be present" do
-    @page.title = "     "
-    assert_not @page.valid?
-  end
 end
