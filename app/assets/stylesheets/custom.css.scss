@@ -1,5 +1,4 @@
 /* variables */
-$card-height: 6em;
 $content-width: 37.5em;
 
 /* reset */
@@ -38,25 +37,35 @@ body {
 
 /* header */
 .navbar {
+  a {
+    margin: 0 0 0 2em;
+    padding: 0 1em;
+    //line-height: 2;
+    color: #fefefe;
+  }
   line-height: 2;
+  background: #393949;
 }
 
 /* main */
-#main {
-  li {
-    margin: 1em 0;
-    padding: 1em 0 2em 5em;
-    //height: $card-height;
-    background: #ffffff;
-    box-shadow: 3px 1px 5px 0 rgba(0,0,0,0.3);
-    -webkit-box-shadow: 3px 1px 5px 0 rgba(0,0,0,0.3);
-    //border: 1px solid #393939;
-    box-sizing: content-box;
-  }
+/* index */
+.card {
+  margin: 1em 0;
+  padding: 1em 0 2em 5em;
+  background: #ffffff;
+  box-shadow: 3px 1px 5px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 3px 1px 5px 0 rgba(0,0,0,0.3);
+  box-sizing: content-box;
 }
 .title {
   line-height: 2;
 }
 .url {
   color: gray;
+}
+
+/* show */
+.entry-header {
+  margin: 3em 0 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
