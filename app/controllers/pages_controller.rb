@@ -9,8 +9,8 @@ class PagesController < ApplicationController
 
   def create
     page = Page.new(page_params)
-    page.update_attributes(Page.extract(page.url))
 
+    page.update_attributes(Page.extract(page.url)) if page.valid?
     if page.save
       flash[:success] = "Successfully page added!"
     else

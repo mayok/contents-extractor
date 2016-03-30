@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #root   'pages#index'
   resources :pages, only: [:index, :show, :create, :destroy]
+  resources :users, except: [:index]
 
   namespace :api, { format: 'json' } do
     resources :pages, only: [:index, :show, :create, :destroy]

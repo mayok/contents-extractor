@@ -1,9 +1,8 @@
 require 'open-uri'
 
 class Page < ActiveRecord::Base
-  validates :url,   presence: true, format: /\A#{URI::regexp(%w(http https))}\z/
-  validates :host,  presence: true
-  validates :title, presence: true
+  validates :url, presence: true, format: /\A#{URI::regexp(%w(http https))}\z/
+  #validates :title, presence: true
 
   def self.extract url
     contents = [
