@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
   resources :pages, only: [:index, :show, :create, :destroy]
+  resources :users, except: [:index]
 
   namespace :api, { format: 'json' } do
     resources :pages, only: [:index, :show, :create]
