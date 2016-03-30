@@ -14,12 +14,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'nokogiri'
 
 group :development do
-  gem 'spring'
   gem 'sqlite3'
   gem 'minitest'
   gem 'json', '1.8.3'
-  gem 'therubyracer' if RUBY_PLATFORM.match(/Linux/)
-  gem 'libv8' if RUBY_PLATFORM.match(/Linux/)
+  # gem 'therubyracer' if RUBY_PLATFORM.match(/linux/)
+  # gem 'libv8' if RUBY_PLATFORM.match(/linux/)
 end
 
 group :production do

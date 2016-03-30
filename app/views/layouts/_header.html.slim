@@ -8,6 +8,10 @@ header.navbar
           = text_field_tag 'page[url]', nil, :placeholder => "http://..."
           = submit_tag "Save"
 
+
+      li
+        input type="text" placeholder="Search"
+
   - flash.each do |message_type, message|
     div class="alert alert-#{ message_type }"
       = message
