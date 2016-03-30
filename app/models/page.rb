@@ -4,6 +4,8 @@ class Page < ActiveRecord::Base
   validates :url,   presence: true, format: /\A#{URI::regexp(%w(http https))}\z/
   validates :host,  presence: true
   validates :title, presence: true
+  default_scope -> { order(created_at: :desc) }
+  after_save  :delete_old
 
   def self.extract url
     contents = [
@@ -53,7 +55,6 @@ class Page < ActiveRecord::Base
         doc = f.last
         break
       end
-      #if doc = f.pop then break end
     end
 
     {
@@ -62,5 +63,9 @@ class Page < ActiveRecord::Base
       content: doc.to_html,
     }
 
+  end
+
+  def delete_old
+    Page.where("created_at < ?", 1.week.ago).delete_all
   end
 end

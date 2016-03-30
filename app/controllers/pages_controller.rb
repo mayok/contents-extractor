@@ -20,9 +20,6 @@ class PagesController < ApplicationController
 
   end
 
-  def destroy
-  end
-
   private
     def page_params
       params.require(:page).permit(:url)
