@@ -1,6 +1,9 @@
 - if !@pages.empty?
-  - @pages.each do |page|
-    li = link_to "#{page.title}", page_path(page)
+  ul.content
+    - @pages.each do |page|
+      li
+        div.title = link_to "#{page.title}", page_path(page)
+        div.url #{page.url}
 
 - else
   p there are no pages
