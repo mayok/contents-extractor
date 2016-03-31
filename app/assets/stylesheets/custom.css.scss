@@ -1,0 +1,71 @@
+/* variables */
+$content-width: 37.5em;
+
+/* reset */
+html {
+  font-size: 16px;
+}
+body, ul,
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+
+/* basic */
+body {
+  background: #fcfcfc;
+}
+.container {
+  display: flex;
+}
+.container-right {
+  justify-content: flex-end;
+}
+.left, .right {
+  flex: 1;
+}
+.content {
+  width: $content-width;
+}
+
+/* header */
+.navbar {
+  a {
+    margin: 0 0 0 2em;
+    padding: 0 1em;
+    //line-height: 2;
+    color: #fefefe;
+  }
+  line-height: 2;
+  background: #393949;
+}
+
+/* main */
+/* index */
+.card {
+  margin: 1em 0;
+  padding: 1em 0 2em 5em;
+  background: #ffffff;
+  box-shadow: 3px 1px 5px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 3px 1px 5px 0 rgba(0,0,0,0.3);
+  box-sizing: content-box;
+}
+.title {
+  line-height: 2;
+}
+.url {
+  color: gray;
+}
+
+/* show */
+.entry-header {
+  margin: 3em 0 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
