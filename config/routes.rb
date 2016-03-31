@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+  get  'signup' => 'users#new'
+
   resources :pages, only: [:index, :show, :create, :destroy]
   resources :users, except: [:index]
 
