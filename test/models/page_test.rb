@@ -5,7 +5,6 @@ class PageTest < ActiveSupport::TestCase
     @page = Page.new(
       title: "hoge",
       url: "http://www.yahoo.co.jp",
-      host: "www.yahoo.co.jp",
       content: "hgoehogehoge"
     )
   end

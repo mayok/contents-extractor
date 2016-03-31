@@ -1,15 +1,19 @@
 header.navbar.container.container-right
   div.left = link_to "CE", root_path
+
   div.content.content-right
     div.btn.btn-plus
     = form_tag('/pages', method: "post") do |f|
       = text_field_tag 'page[url]', nil, :placeholder => "http://..."
       = submit_tag "Save"
+
   div.right
+    /if logged_in
+    /= link_to gravator_icon
 
-
-      li
-        input type="text" placeholder="Search"
+    /if not logged_in
+    /= link_to "Login",  new_user_path
+    = link_to "Sign up", new_user_path
 
   - flash.each do |message_type, message|
     div class="alert alert-#{ message_type }"

@@ -3,11 +3,9 @@
 one:
   title: MyString
   url: http://www.example1.com
-  host: www.example1.com
   content: MyText
 
 two:
   title: MyString
   url: http://www.example2.com
-  host: www.example2.com
   content: MyText
