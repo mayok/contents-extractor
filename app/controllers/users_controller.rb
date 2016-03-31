@@ -15,8 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @pages = @user.pages.all
   end
 
   def edit

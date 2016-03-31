@@ -1,12 +1,7 @@
 header.navbar.container.container-right
-  .left
-    - if logged_in?
-      = link_to "CE", user_path(current_user.id)
-    - else
-      = link_to "CE", root_path
+  .left = link_to "CE", root_path
 
-
-  .content.content-right
+  .content
     - if logged_in?
       div.btn.btn-plus
       = form_tag(user_pages_path(current_user), method: "post") do |f|
