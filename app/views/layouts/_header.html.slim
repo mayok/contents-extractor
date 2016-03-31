@@ -8,12 +8,14 @@ header.navbar.container.container-right
       = submit_tag "Save"
 
   div.right
-    /if logged_in
-    /= link_to gravatar current_user
+    - if logged_in?
+      /= gravatar_for current_user
+      = link_to gravatar_for(current_user), current_user
+      = link_to "Log out", logout_path, method: "delete"
 
-    /if not logged_in
-    /= link_to "Login",  new_user_path
-    = link_to "Sign up", new_user_path
+    - else
+      = link_to "Login",   login_path
+      = link_to "Sign up", new_user_path
 
   - flash.each do |message_type, message|
     div class="alert alert-#{ message_type }"
