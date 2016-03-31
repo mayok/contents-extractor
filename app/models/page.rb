@@ -26,7 +26,6 @@ class Page < ActiveRecord::Base
       "//*[contains(@class, 'footer') or contains(@class, 'Footer')]",
       "//*[contains(@class, 'social')]",
       "//*[contains(@class, 'modal')]",
-      #"//a[not(contains(@href, '#{host}'))]",
     ]
 
     charset = nil
@@ -58,7 +57,6 @@ class Page < ActiveRecord::Base
     end
 
     {
-      host: url.split('/')[2],
       title: title,
       content: doc.to_html,
     }

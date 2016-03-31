@@ -3,7 +3,6 @@ class PagesController < ApplicationController
 
   def show
     @page = current_user.pages.find_by(params[:id])
-    #@page = Page.find(params[:id])
   end
 
   def create
@@ -15,6 +14,7 @@ class PagesController < ApplicationController
     else
       flash[:fail]    = "failed"
     end
+    redirect_to root_url
   end
 
   def destroy

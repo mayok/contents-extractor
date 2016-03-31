@@ -9,7 +9,7 @@ header.navbar.container.container-right
   .content.content-right
     - if logged_in?
       div.btn.btn-plus
-      = form_tag('/pages', method: "post") do |f|
+      = form_tag(user_pages_path(current_user), method: "post") do |f|
         = text_field_tag 'page[url]', nil, :placeholder => "http://..."
         = submit_tag "Save"
 
