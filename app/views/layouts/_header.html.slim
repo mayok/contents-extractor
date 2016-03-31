@@ -9,7 +9,7 @@ header.navbar.container.container-right
 
   div.right
     /if logged_in
-    /= link_to gravator_icon
+    /= link_to gravatar current_user
 
     /if not logged_in
     /= link_to "Login",  new_user_path
