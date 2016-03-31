@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   post   'login'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  resources :pages, only: [:index, :show, :create, :destroy]
-  resources :users, except: [:index]
+  # resources :pages, only: [:create, :destroy]
+  # resources :users, except: [:index]
+  resources :users, except: [:index] do
+    resources :pages, only: [:show, :create, :destroy]
+  end
 
   namespace :api, { format: 'json' } do
     resources :pages, only: [:index, :show, :create]

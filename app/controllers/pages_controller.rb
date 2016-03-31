@@ -1,14 +1,13 @@
 class PagesController < ApplicationController
-  def index
-    @pages = Page.all
-  end
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def show
-    @page = Page.find(params[:id])
+    @page = current_user.pages.find_by(params[:id])
+    #@page = Page.find(params[:id])
   end
 
   def create
-    page = Page.new(page_params)
+    page = current_user.pages.build(page_params)
 
     page.update_attributes(Page.extract(page.url)) if page.valid?
     if page.save
@@ -16,7 +15,9 @@ class PagesController < ApplicationController
     else
       flash[:fail]    = "failed"
     end
-    redirect_to root_url
+  end
+
+  def destroy
 
   end
 

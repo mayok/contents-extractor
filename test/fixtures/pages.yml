@@ -4,8 +4,17 @@ one:
   title: MyString
   url: http://www.example1.com
   content: MyText
+  created_at: <%= 10.minutes.ago %>
 
 two:
   title: MyString
   url: http://www.example2.com
   content: MyText
+  created_at: <%= 1.day.ago %>
+
+most_recent:
+  title: MyString
+  url: http://www.example3.com
+  content: MyText
+  created_at: <%= Time.zone.now %>
+

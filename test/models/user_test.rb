@@ -81,4 +81,16 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 8
     assert_not @user.valid?
   end
+
+  # if user destroyed, associated pages also destroyed
+  # test "associated pages should be destroyed" do
+  #   @user.save
+  #   @user.pages.create!(title: "MyString",
+  #                       url: "http://www.example.com",
+  #                       content: "MyString"
+  #                      )
+  #   assert_difference 'Page.count', -1 do
+  #     @user.destroy
+  #   end
+  # end
 end

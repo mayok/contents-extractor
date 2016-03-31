@@ -1,4 +1,7 @@
 h1 Users#show
 
-p = @user.name
-p = @user.email
+- if @user.pages.any?
+  = render @pages
+
+- else
+  p there are no pages

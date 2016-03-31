@@ -1,0 +1,8 @@
+ul
+  /- pages.each do |page|
+  /  li.card
+  /    div.title = link_to "#{page.title}", page_path(page)
+  /    div.url #{page.url}
+  li.card
+    .title = link_to "#{page.title}", user_page_path(current_user.id, page.id)
+    .url   #{page.url}
