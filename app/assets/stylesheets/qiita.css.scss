@@ -1,0 +1,68 @@
+.markdownContent {
+  .code-frame {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin: 1em 0;
+    background-color: #f7f7f7;
+    line-height: 0;
+    overflow: hidden;
+    pre {
+      border-radius: 3px;
+      border: 0;
+      margin: 0;
+      padding: 8px 15px;
+      line-height: 18px;
+      background-color: #f7f7f7;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      overflow-x: scroll;
+      word-wrap: normal;
+      white-space: pre;
+    }
+  }
+  .code-lang {
+    color: #555;
+    display: inline-block;
+    padding: 3px 6px;
+    margin: 0;
+    line-height: 1;
+    background-color: rgba(0,0,0,0.07);
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .highlight {
+    background: #fff;
+  }
+  p {
+    margin-bottom: 0;
+    margin-top: 1.6em;
+    font-size: 1em;
+    line-height: 1.875;
+    word-wrap: break-word;
+  }
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #4a4a4a;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+p {
+  margin: 0 0 10px;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333;
+  overflow: auto;
+}
