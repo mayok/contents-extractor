@@ -1,6 +1,5 @@
-- if @pages.any?
-  = render @pages
+- if logged_in?
+  = render partial: "/pages/page", collection: @pages
 
 - else
-  p there are no pages
-
+  h1.hero Contentes Extractor
