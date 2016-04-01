@@ -1,6 +1,8 @@
 module Api
   class PagesController < ApplicationController
 
+    protect_from_forgery :except  => ["create"]
+
     def index
       @pages = Page.all
       render json: @pages, only: [:id, :url, :title]
@@ -23,10 +25,6 @@ module Api
           error: "invalid url"
         }
       end
-    end
-
-    def destroy
-
     end
 
     private

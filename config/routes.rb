@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root   'static_pages#home'
+  get    'signup' => 'users#new'
+  get    'login'  => 'sessions#new'
+  post   'login'  => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
-  #root   'pages#index'
-  resources :pages, only: [:index, :show, :create, :destroy]
-  resources :users, except: [:index]
+  # resources :pages, only: [:create, :destroy]
+  # resources :users, except: [:index]
+  resources :users, except: [:index, :edit] do
+    resources :pages, only: [:show, :create, :destroy]
+  end
 
   namespace :api, { format: 'json' } do
-    resources :pages, only: [:index, :show, :create, :destroy]
+    resources :pages, only: [:index, :show, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
