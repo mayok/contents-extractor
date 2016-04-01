@@ -18,10 +18,6 @@ header.navbar.container.container-right
       = link_to "Login",   login_path
       = link_to "Sign up", new_user_path
 
-
-      li
-        input type="text" placeholder="Search"
-
   - flash.each do |message_type, message|
     div class="alert alert-#{ message_type }"
       = message
