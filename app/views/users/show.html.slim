@@ -1,4 +1,21 @@
-h1 Users#show
+= form_for @user do |f|
+  = render 'shared/error_messages', object: f.object
 
-/ show user information
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :email
+  = f.email_field :email
+
+  = f.label :password
+  = f.password_field :password
+
+  = f.label :password_confirmation, "Confirmation"
+  = f.password_field :password_confirmation
+
+  = f.submit "Save changes"
+
+= form_tag("", method: "get") do |f|
+  = text_field_tag "", nil
+  = button_tag "Generate", data: { disable_with: "Please wait..." }, type: 'button'
 

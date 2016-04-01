@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # resources :pages, only: [:create, :destroy]
   # resources :users, except: [:index]
-  resources :users, except: [:index] do
+  resources :users, except: [:index, :edit] do
     resources :pages, only: [:show, :create, :destroy]
   end
 

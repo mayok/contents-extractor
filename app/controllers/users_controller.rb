@@ -11,19 +11,24 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome"
-      redirect_to @user
+      redirect_to root_url
     else
       render new_user_path
     end
   end
 
   def show
-  end
-
-  def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    user = User.find(params[:id])
+    if user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'show'
+    end
   end
 
   def destroy
