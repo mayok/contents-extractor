@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  root   'pages#index'
-  resources :pages, only: [:index, :show, :create]
+  root   'static_pages#home'
+  get    'signup' => 'users#new'
+  get    'login'  => 'sessions#new'
+  post   'login'  => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+  # resources :pages, only: [:create, :destroy]
+  # resources :users, except: [:index]
+  resources :users, except: [:index, :edit] do
+    resources :pages, only: [:show, :create, :destroy]
+
+    post 'token', on: :member
+  end
 
   namespace :api, { format: 'json' } do
     resources :pages, only: [:index, :show, :create]

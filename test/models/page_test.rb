@@ -2,10 +2,10 @@ require 'test_helper'
 
 class PageTest < ActiveSupport::TestCase
   def setup
-    @page = Page.new(
+    @user = users(:one)
+    @page = @user.pages.build(
       title: "hoge",
-      url: "http://example.com",
-      host: "example.com",
+      url: "http://www.yahoo.co.jp",
       content: "hgoehogehoge"
     )
   end
@@ -19,13 +19,8 @@ class PageTest < ActiveSupport::TestCase
     assert_not @page.valid?
   end
 
-  test "host should be present" do
-    @page.host = "     "
-    assert_not @page.valid?
+  test "order should be most recent first" do
+    assert_equal pages(:most_recent), Page.first
   end
 
-  test "title should be present" do
-    @page.title = "     "
-    assert_not @page.valid?
-  end
 end

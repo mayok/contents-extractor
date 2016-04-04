@@ -46,6 +46,19 @@ body {
   line-height: 2;
   background: #393949;
 }
+.gravatar {
+  margin: -3px 0 0;
+  vertical-align: middle;
+}
+.hero {
+  h1 {
+    font-size: 2.5em;
+    font-weight: normal;
+  }
+  padding-top: 6em;
+  padding-bottom: 8em;
+  text-align: left;
+}
 
 /* main */
 /* index */
@@ -68,4 +81,32 @@ body {
 .entry-header {
   margin: 3em 0 2em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* new */
+.form {
+  label {
+    display: block;
+    margin: 1em 0;
+    padding: .75em .25em .2em;
+    color: #346;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    box-sizing: border-box;
+  }
+  input {
+    display: block;
+    width: 100%;
+    margin-top: .25em;
+    padding: 0 .5em;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 1.2em;
+  }
+  margin: 0 auto;
+  width: $content-width / 1.5;
+}
+.form:last-of-type {
+  margin-top: 4em;
 }

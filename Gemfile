@@ -9,17 +9,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
 
 gem 'nokogiri'
+gem 'bcrypt'
 
 group :development do
-  gem 'spring'
   gem 'sqlite3'
   gem 'minitest'
   gem 'json', '1.8.3'
-  gem 'therubyracer' if RUBY_PLATFORM.match(/Linux/)
-  gem 'libv8' if RUBY_PLATFORM.match(/Linux/)
 end
 
 group :production do

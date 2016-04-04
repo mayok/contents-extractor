@@ -1,0 +1,7 @@
+- if logged_in?
+  ul
+    = render partial: "/pages/page", collection: @pages
+
+- else
+  .hero
+    h1 Contentes Extractor
