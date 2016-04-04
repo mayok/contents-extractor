@@ -34,4 +34,16 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal name,  @user.name
     assert_equal email, @user.email
   end
+
+  test "generate token" do
+    log_in_as @user
+    get user_path(@user)
+    assert_template 'users/show'
+    post token_user_path
+
+    assert_redirected_to @user
+    follow_redirect!
+    assert_template 'users/show'
+    assert_select "code"
+  end
 end
