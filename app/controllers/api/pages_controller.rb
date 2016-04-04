@@ -4,32 +4,58 @@ module Api
     protect_from_forgery :except  => ["create"]
 
     def index
-      @pages = Page.all
-      render json: @pages, only: [:id, :url, :title]
-    end
-
-    def show
-      @page = Page.find(params[:id])
-      render json: @page
-    end
-
-    def create
-      @page = Page.new(page_params)
-      @page.update_attributes(Page.extract @page.url)
-
-      if @page.save
-        render json: { ok: true }
+      if user = User.find_by(token: params[:token])
+        render json: user.pages, only: [:id, :url, :title]
       else
         render json: {
           ok: false,
-          error: "invalid url"
+          error: "invalid token"
+        }
+      end
+    end
+
+    def show
+      if user = User.find_by(token: params[:token])
+        if page = user.pages.find(params[:id])
+          render json: page
+        else
+          render json: {
+            ok: false,
+            error: "invalid page id"
+          }
+        end
+      else
+        render json: {
+          ok: false,
+          error: "invalid token"
+        }
+      end
+    end
+
+    def create
+      if user = User.find_by(token: params[:token])
+        page = user.pages.build(page_params)
+        page.update_attributes(page.extract) if page.valid?
+
+        if page.save
+          render json: { ok: true }
+        else
+          render json: {
+            ok: false,
+            error: "invalid url"
+          }
+        end
+      else
+        render json: {
+          ok: false,
+          error: "invalid token"
         }
       end
     end
 
     private
       def page_params
-        params.require(:page).permit(:url)
+        ActionController::Parameters.new(params).permit(:url)
       end
 
   end
