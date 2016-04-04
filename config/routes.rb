@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # resources :users, except: [:index]
   resources :users, except: [:index, :edit] do
     resources :pages, only: [:show, :create, :destroy]
+
+    post 'token', on: :member
   end
 
   namespace :api, { format: 'json' } do
