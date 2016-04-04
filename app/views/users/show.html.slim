@@ -20,7 +20,11 @@
 
     = f.submit "Save changes"
 
-= form_tag("", method: "get") do |f|
-  = text_field_tag "", nil
-  = button_tag "Generate", data: { disable_with: "Please wait..." }, type: 'button'
-
+.form
+  = form_tag(token_user_path, method: "post") do |f|
+    = content_tag :div, id: "token" do
+      - if @user.token.nil?
+        = button_tag "Generate token", data: { disable_with: "Please wait..." }, type: 'submit'
+      - else
+        code = @user.token
+        = button_tag "Re-generate", data: { disable_with: "Please wait..." }, type: 'submit'

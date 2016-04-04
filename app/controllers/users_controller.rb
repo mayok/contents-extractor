@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :update]
-  before_action :correct_user,   only: [:show, :update]
+  before_action :logged_in_user, only: [:show, :update, :token]
+  before_action :correct_user,   only: [:show, :update, :token]
 
   def new
     @user = User.new
@@ -32,6 +32,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def token
+    user = User.find(params[:id])
+    user.update_attribute(:token, User.new_token)
+    redirect_to user
   end
 
   private
