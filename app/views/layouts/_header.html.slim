@@ -1,23 +1,24 @@
-header.navbar.container.container-right
-  .left = link_to "CE", root_path
-
-  .content
+header.navbar
+  .container
+    = link_to "CE", root_path, class: "logo"
     - if logged_in?
-      div.btn.btn-plus
-      = form_tag(user_pages_path(current_user), method: "post") do |f|
-        = text_field_tag 'page[url]', nil, :placeholder => "http://..."
-        = submit_tag "Save"
+      div.btn.btn-plus.header-search
+        = form_tag(user_pages_path(current_user), method: "post") do |f|
+          = text_field_tag 'page[url]', nil, :placeholder => "http://...", :class => "header-search-input"
+          /= submit_tag "Save"
 
-  .right
-    - if logged_in?
-      /= gravatar_for current_user
-      = link_to gravatar_for(current_user), current_user
-      = link_to "Log out", logout_path, method: "delete"
+    .content
 
-    - else
-      = link_to "Login",   login_path
-      = link_to "Sign up", new_user_path
+    .nav
+      - if logged_in?
+        /= gravatar_for current_user
+        = link_to gravatar_for(current_user), current_user
+        = link_to "Log out", logout_path, method: "delete"
 
-  - flash.each do |message_type, message|
-    div class="alert alert-#{ message_type }"
-      = message
+      - else
+        = link_to "Login",   login_path
+        = link_to "Sign up", new_user_path
+
+    - flash.each do |message_type, message|
+      div class="alert alert-#{ message_type }"
+        = message
