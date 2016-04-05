@@ -82,6 +82,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
+
   # if user destroyed, associated pages also destroyed
   # test "associated pages should be destroyed" do
   #   @user.save
