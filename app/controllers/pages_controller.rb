@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
 
   def show
-    @page = current_user.pages.find_by(params[:id])
+    @page = current_user.pages.find_by(id: params[:id])
   end
 
   def create
