@@ -1,8 +1,6 @@
-module PageProcessor
+require 'open-uri'
 
-  def delete_old
-    Page.where("user_id = ? and created_at < ?", user_id, 3.days.ago).delete_all
-  end
+module PageProcessor
 
   def extract
     contents = [
@@ -47,7 +45,6 @@ module PageProcessor
     for cond in contents do
       f = doc.xpath(cond)
       if !f.empty?
-        p cond
         doc = f.last
         break
       end

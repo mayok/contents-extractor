@@ -12,6 +12,7 @@ gem 'turbolinks'
 
 gem 'nokogiri'
 gem 'bcrypt'
+gem 'addressable'
 
 group :development do
   gem 'sqlite3'

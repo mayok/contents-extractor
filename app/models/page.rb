@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class Page < ActiveRecord::Base
   belongs_to :user
   validates :user_id, presence: true
@@ -8,4 +6,9 @@ class Page < ActiveRecord::Base
   after_save  :delete_old
 
   include PageProcessor
+
+  private
+    def delete_old
+      Page.where("user_id = ? and created_at < ?", user_id, 3.days.ago).delete_all
+    end
 end
